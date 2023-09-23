@@ -1,19 +1,24 @@
 import { Button } from "components/Button/Button"
 import css from "./ContactForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { contactArraySlice } from "redux/contactArraySlice";
 import { nanoid } from "@reduxjs/toolkit";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { addContact } from "components/api";
 
 
 export const ContactForm = () => {
 
   const dispatch = useDispatch()
 
-  const currentContactArray = useSelector(state => state.contactArray)
+  const currentContactArray = useSelector(state => state.contactArray.contacts.items)
   
+  // const loading = useSelector(state => state.contactArray.contacts.isLoading)
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    // console.log(loading);
+    // if (loading) { return }
+
     const form = event.target;
     if (!form.name.value || !form.number.value) { return }
 
@@ -33,7 +38,7 @@ export const ContactForm = () => {
       return Notify.warning('You already have contact with the same number');
     }
 
-    dispatch(contactArraySlice.actions.addContact({ name: form.name.value, number: form.number.value.split(" ").join(""), id: nanoid(), isChecked: false, }));
+    dispatch(addContact({id: nanoid(), name: form.name.value, number: form.number.value.split(" ").join("") }));
     form.reset();
   };
 

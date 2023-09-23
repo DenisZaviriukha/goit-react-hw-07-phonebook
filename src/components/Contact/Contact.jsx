@@ -1,13 +1,15 @@
 import { MdClose } from "react-icons/md";
 import css from "./Contact.module.css";
 import { useDispatch } from "react-redux";
-import { contactArraySlice } from "redux/contactArraySlice";
+import { deleteContact } from "components/api";
 
 export const Contact = ({ contact }) => {
 
   const dispatch = useDispatch()
 
-  const onDeleteButoon = () => dispatch(contactArraySlice.actions.deleteContact(contact.id))
+  const onDeleteButoon = () => {
+    dispatch(deleteContact(contact.id))
+  }
   
   return (
     <div className={css.wrapper}>
