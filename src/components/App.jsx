@@ -1,7 +1,4 @@
 import { Layout } from "components/Layout/Layout";
-import { AppBar } from "components/AppBar/AppBar";
-import { ContactForm } from "components/ContactForm/ContactForm"
-import { ContactList } from "components/ContactList/ContactList";
 import { NavLink, Route, Routes } from "react-router-dom";
 import { Contacts } from "./Contacts/Contacts";
 import { Register } from "./Register/Register";
