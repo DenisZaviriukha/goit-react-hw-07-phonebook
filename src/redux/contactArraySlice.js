@@ -10,7 +10,10 @@ export const contactArraySlice = createSlice({
             isLoading: false,
             error: null
         },
-        filters: ''
+        filters: '',
+        // isLoggedIn: false,
+        // // isLoggedIn: true,
+        // token: null,
     },
     
     // reducers: {
@@ -69,3 +72,5 @@ export const contactArraySlice = createSlice({
     }
 
 })
+
+export const contactReducer = contactArraySlice.reducer;
